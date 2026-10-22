@@ -49,19 +49,39 @@ function App() {
 
   return (
     <>
-      <input type="text" ref={taskInput} placeholder="Add task" />
-      <button onClick={handleSubmit}>
-        {button ? <Loader /> : "Create task"}
-      </button>
-      <div>
-        {tasks.map((task) => (
-          <TodoCard
-            deletee={deleteTask}
-            id={task.id}
-            key={task.id}
-            title={task.title}
-          />
-        ))}
+      <div className="min-h-screen bg-gray-100 p-6">
+        <div className="mx-auto max-w-xl">
+          <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
+            My Todo App
+          </h1>
+
+          <div className="mb-6 flex gap-2">
+            <input
+              type="text"
+              ref={taskInput}
+              placeholder="Add task"
+              className="flex-1 rounded-md border border-gray-300 bg-white px-4 py-2 outline-none focus:border-blue-500"
+            />
+
+            <button
+              onClick={handleSubmit}
+              className="rounded-md cursor-pointer bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            >
+              {button ? <Loader /> : "Create task"}
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {tasks.map((task) => (
+              <TodoCard
+                deletee={deleteTask}
+                id={task.id}
+                key={task.id}
+                title={task.title}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
